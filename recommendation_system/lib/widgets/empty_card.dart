@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class EmptyCard extends StatelessWidget {
   final double? width;
   final double? height;
+  final String moviename;
 
   const EmptyCard({
     Key? key,
     this.width,
     this.height,
+    required this.moviename,
   }) : super(key: key);
 
   @override
@@ -27,6 +29,7 @@ class EmptyCard extends StatelessWidget {
           ),
         ],
       ),
+      child: Center(child: Text(moviename, style: const TextStyle(fontSize: 30.0),),),
     );
   }
 }
