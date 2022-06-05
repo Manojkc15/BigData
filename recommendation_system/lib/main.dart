@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:recommendation_system/screens/hotstar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ const MyApp({Key? key}) : super(key: key);
      theme: ThemeData(
        primarySwatch: Colors.blue,
      ),
-     home: const HomePage(),
+    //  home: const HomePage(),
+    home: Hotstar(),
     );
   }
 }
