@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:recommendation_system/widgets/empty_card.dart';
+import 'package:recommendation_system/widgets/size_helpers.dart';
 
 import '../widgets/autorefresh.dart';
 
@@ -31,11 +32,12 @@ class RecommendationWidget extends StatefulWidget {
 class _RecommendationWidgetState extends State<RecommendationWidget> {
   @override
   Widget build(BuildContext context) {
+    double height = getHeight(context);
     return Transform.scale(
       scale: 0.80,
       child: Scaffold(
         body: Container(
-          height: 550,
+          height: (550 / height) * height,
           decoration: const BoxDecoration(
             color: Color(0xffEDF9FE),
             borderRadius: BorderRadius.all(
