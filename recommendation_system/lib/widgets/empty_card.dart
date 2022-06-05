@@ -29,7 +29,12 @@ class EmptyCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(child: Text(moviename, style: const TextStyle(fontSize: 30.0),),),
+      child: Center(
+        child: Text(
+          moviename,
+          style: const TextStyle(fontSize: 25.0),
+        ),
+      ),
     );
   }
 }
