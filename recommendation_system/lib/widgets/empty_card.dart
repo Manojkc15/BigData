@@ -17,8 +17,8 @@ class EmptyCard extends StatelessWidget {
       height: height,
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
       decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        color: Color(0xff42C2FF),
+        borderRadius: BorderRadius.all(Radius.circular(30.0)),
         boxShadow: <BoxShadow>[
           BoxShadow(
             color: Colors.black12,

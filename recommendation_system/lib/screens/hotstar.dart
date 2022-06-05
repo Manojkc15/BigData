@@ -31,27 +31,39 @@ class RecommendationWidget extends StatefulWidget {
 class _RecommendationWidgetState extends State<RecommendationWidget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: AnimationLimiter(
-          child: ListView.builder(
-            padding: const EdgeInsets.all(8.0),
-            itemCount: 100,
-            itemBuilder: (BuildContext context, int index) {
-              return AnimationConfiguration.staggeredList(
-                position: index,
-                duration: const Duration(milliseconds: 375),
-                child: SlideAnimation(
-                  verticalOffset: 44.0,
-                  child: FadeInAnimation(
-                    child: EmptyCard(
-                      width: MediaQuery.of(context).size.width,
-                      height: 88.0,
+    return Transform.scale(
+      scale: 0.80,
+      child: Scaffold(
+        body: Container(
+          height: 550,
+          decoration: const BoxDecoration(
+            color: Color(0xffEDF9FE),
+            borderRadius: BorderRadius.all(
+              Radius.circular(25.0),
+            ),
+          ),
+          child: SafeArea(
+            child: AnimationLimiter(
+              child: ListView.builder(
+                padding: const EdgeInsets.all(8.0),
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 375),
+                    child: SlideAnimation(
+                      verticalOffset: 44.0,
+                      child: FadeInAnimation(
+                        child: EmptyCard(
+                          width: MediaQuery.of(context).size.width,
+                          height: 88.0,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              );
-            },
+                  );
+                },
+              ),
+            ),
           ),
         ),
       ),
