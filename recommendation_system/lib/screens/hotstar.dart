@@ -186,7 +186,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
               ),
               const SizedBox(height: 20.0),
               Container(
-                height: (470 / height) * height,
+                height: (475 / height) * height,
                 decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 205, 213, 255),
                   borderRadius: BorderRadius.all(

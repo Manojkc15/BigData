@@ -3,6 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:recommendation_system/widgets/empty_card.dart';
 import 'package:recommendation_system/widgets/size_helpers.dart';
 import 'package:http/http.dart';
+import '../navbar.dart';
 import '../widgets/autorefresh.dart';
 
 List<String> movies = ['movie1', 'movie2', 'movie3', 'movie4', 'movie5'];
@@ -14,6 +15,7 @@ class Netflix extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xffE50914),
         title: const Text(
           "Netflix Recommendation system",
           style: TextStyle(fontSize: 20.0),
@@ -163,7 +165,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     },
                   ),
                   filled: true,
-                  fillColor: const Color(0xffEDF9FE),
+                  fillColor: Color.fromARGB(255, 250, 215, 216),
                   focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffEDF9FE), width: 0.0),
@@ -184,9 +186,9 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
               ),
               const SizedBox(height: 20.0),
               Container(
-                height: (465 / height) * height,
+                height: (475 / height) * height,
                 decoration: const BoxDecoration(
-                  color: Color(0xffEDF9FE),
+                  color: Color.fromARGB(255, 250, 215, 216),
                   borderRadius: BorderRadius.all(
                     Radius.circular(25.0),
                   ),
@@ -204,6 +206,8 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             verticalOffset: 44.0,
                             child: FadeInAnimation(
                               child: EmptyCard(
+                                tileColor: Color(0xffE50914),
+                                textColor: Colors.white,
                                 moviename: movies[index],
                                 width: MediaQuery.of(context).size.width,
                                 height: 75.0,
