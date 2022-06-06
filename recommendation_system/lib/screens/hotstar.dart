@@ -32,6 +32,34 @@ class RecommendationWidget extends StatefulWidget {
 }
 
 class _RecommendationWidgetState extends State<RecommendationWidget> {
+  Future<void> _showMyDialog(
+      {required String title, required String description}) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(description),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   // Future<List<String>> getMovies() async {
   // var url = "https://reccomndsys.herokuapp.com/recommend/PK";
   // final response = await get(Uri.parse(url));
@@ -74,29 +102,64 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     icon: const Icon(Icons.search),
                     iconSize: 35.0,
                     onPressed: () async {
-                      rebuild = true;
-                      print(rebuild);
-                      // List<String> movies_list = getMovies();
-                      // print('icon pressed');
-                      var url =
-                          "https://reccomndsys.herokuapp.com/recommend/${myController.text}";
-                      final response = await get(Uri.parse(url));
-                      String response_str = response.body;
-                      List<String> movies_list = response_str
-                          .substring(1, response_str.length - 1)
-                          .split(',');
+                      if (myController.text.length > 1) {
+                        rebuild = true;
+                        print(rebuild);
+                        // List<String> movies_list = getMovies();
+                        // print('icon pressed');
+                        var url =
+                            "https://reccomndsys.herokuapp.com/recommend/${myController.text}";
+                        final response = await get(Uri.parse(url));
+                        print("status ${response.statusCode}");
+                        String response_str = response.body;
+                        List<String> movies_list = response_str
+                            .substring(1, response_str.length - 1)
+                            .split(',');
+                        print(movies_list.length);
+                        if (movies_list.length > 1) {
+                          for (int i = 0; i < movies_list.length; i++) {
+                            movies_list[i] = movies_list[i]
+                                .substring(1, movies_list[i].length - 1);
+                          }
 
-                      for (int i = 0; i < movies_list.length; i++) {
-                        movies_list[i] = movies_list[i]
-                            .substring(1, movies_list[i].length - 1);
+                          setState(() {
+                            movies = List.from(movies_list);
+                          });
+                          // print(response.body.runtimeType);
+                          print(movies_list);
+                          // movies = List.from(movies_list);
+                        } else {
+                          print("no moives");
+                          showDialog<void>(
+                            context: context,
+                            barrierDismissible: false, // user must tap button!
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Movie not found'),
+                                content: SingleChildScrollView(
+                                  child: ListBody(
+                                    children: const <Widget>[
+                                      Text('Please enter a valid movie name'),
+                                    ],
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: const Text('OK'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+                      } else {
+                        _showMyDialog(
+                            title: 'Search field cannot be empty',
+                            description: 'Please enter a movie name');
                       }
-
-                      setState(() {
-                        movies = List.from(movies_list);
-                      });
-                      // print(response.body.runtimeType);
-                      // print(movies_list);
-                      // movies = List.from(movies_list);
                     },
                   ),
                   filled: true,
@@ -129,31 +192,26 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                   ),
                 ),
                 child: SafeArea(
-                  child: AutoRefresh(
-                    duration: myController.text.isNotEmpty
-                        ? Duration(milliseconds: 1000)
-                        : Duration(days: 3),
-                    child: AnimationLimiter(
-                      child: ListView.builder(
-                        padding: const EdgeInsets.all(8.0),
-                        itemCount: 5,
-                        itemBuilder: (BuildContext context, int index) {
-                          return AnimationConfiguration.staggeredList(
-                            position: index,
-                            duration: const Duration(milliseconds: 375),
-                            child: SlideAnimation(
-                              verticalOffset: 44.0,
-                              child: FadeInAnimation(
-                                child: EmptyCard(
-                                  moviename: movies[index],
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 75.0,
-                                ),
+                  child: AnimationLimiter(
+                    child: ListView.builder(
+                      padding: const EdgeInsets.all(8.0),
+                      itemCount: 5,
+                      itemBuilder: (BuildContext context, int index) {
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          duration: const Duration(milliseconds: 375),
+                          child: SlideAnimation(
+                            verticalOffset: 44.0,
+                            child: FadeInAnimation(
+                              child: EmptyCard(
+                                moviename: movies[index],
+                                width: MediaQuery.of(context).size.width,
+                                height: 75.0,
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
