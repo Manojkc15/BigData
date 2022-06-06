@@ -104,18 +104,18 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     onPressed: () async {
                       if (myController.text.length > 1) {
                         rebuild = true;
-                        print(rebuild);
+                        // print(rebuild);
                         // List<String> movies_list = getMovies();
                         // print('icon pressed');
                         var url =
-                            "https://reccomndsys.herokuapp.com/recommend/${myController.text}";
+                            "https://reccomndsys.herokuapp.com/disney_recommend/${myController.text}";
                         final response = await get(Uri.parse(url));
-                        print("status ${response.statusCode}");
+                        // print("status ${response.statusCode}");
                         String response_str = response.body;
                         List<String> movies_list = response_str
                             .substring(1, response_str.length - 1)
                             .split(',');
-                        print(movies_list.length);
+                        // print(movies_list.length);
                         if (movies_list.length > 1) {
                           for (int i = 0; i < movies_list.length; i++) {
                             movies_list[i] = movies_list[i]
@@ -126,10 +126,10 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             movies = List.from(movies_list);
                           });
                           // print(response.body.runtimeType);
-                          print(movies_list);
+                          // print(movies_list);
                           // movies = List.from(movies_list);
                         } else {
-                          print("no moives");
+                          // print("no moives");
                           showDialog<void>(
                             context: context,
                             barrierDismissible: false, // user must tap button!
