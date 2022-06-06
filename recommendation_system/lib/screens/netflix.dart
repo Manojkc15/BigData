@@ -8,16 +8,16 @@ import '../widgets/autorefresh.dart';
 
 List<String> movies = ['movie1', 'movie2', 'movie3', 'movie4', 'movie5'];
 
-class Hotstar extends StatelessWidget {
-  const Hotstar({Key? key}) : super(key: key);
+class Netflix extends StatelessWidget {
+  const Netflix({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 67, 93, 221),
+        backgroundColor: Color(0xffE50914),
         title: const Text(
-          "Hotstar Recommendation system",
+          "Netflix Recommendation system",
           style: TextStyle(fontSize: 20.0),
         ),
       ),
@@ -110,7 +110,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                         // List<String> movies_list = getMovies();
                         // print('icon pressed');
                         var url =
-                            "https://reccomndsys.herokuapp.com/disney_recommend/${myController.text}";
+                            "https://reccomndsys.herokuapp.com/recommend/${myController.text}";
                         final response = await get(Uri.parse(url));
                         // print("status ${response.statusCode}");
                         String response_str = response.body;
@@ -165,7 +165,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     },
                   ),
                   filled: true,
-                  fillColor: Color.fromARGB(255, 205, 213, 255),
+                  fillColor: Color.fromARGB(255, 250, 215, 216),
                   focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffEDF9FE), width: 0.0),
@@ -188,7 +188,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
               Container(
                 height: (475 / height) * height,
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 205, 213, 255),
+                  color: Color.fromARGB(255, 250, 215, 216),
                   borderRadius: BorderRadius.all(
                     Radius.circular(25.0),
                   ),
@@ -206,7 +206,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             verticalOffset: 44.0,
                             child: FadeInAnimation(
                               child: EmptyCard(
-                                tileColor: Color.fromARGB(255, 67, 93, 221),
+                                tileColor: Color(0xffE50914),
                                 textColor: Colors.white,
                                 moviename: movies[index],
                                 width: MediaQuery.of(context).size.width,

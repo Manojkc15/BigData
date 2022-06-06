@@ -4,12 +4,16 @@ class EmptyCard extends StatelessWidget {
   final double? width;
   final double? height;
   final String moviename;
+  final Color tileColor;
+  final Color textColor;
 
   const EmptyCard({
     Key? key,
     this.width,
     this.height,
     required this.moviename,
+    required this.tileColor,
+    required this.textColor,
   }) : super(key: key);
 
   @override
@@ -18,10 +22,10 @@ class EmptyCard extends StatelessWidget {
       width: width,
       height: height,
       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-      decoration: const BoxDecoration(
-        color: Color(0xff42C2FF),
+      decoration: BoxDecoration(
+        color: tileColor,
         borderRadius: BorderRadius.all(Radius.circular(30.0)),
-        boxShadow: <BoxShadow>[
+        boxShadow: const <BoxShadow>[
           BoxShadow(
             color: Colors.black12,
             blurRadius: 4.0,
@@ -32,7 +36,7 @@ class EmptyCard extends StatelessWidget {
       child: Center(
         child: Text(
           moviename,
-          style: const TextStyle(fontSize: 25.0),
+          style: TextStyle(fontSize: 25.0, color: textColor),
         ),
       ),
     );
