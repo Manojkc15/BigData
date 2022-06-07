@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:recommendation_system/screens/hotstar.dart';
 
+import 'screens/hotstar.dart';
 import 'screens/netflix.dart';
+import 'screens/images.dart';
 
 class PersistantBottomNavBar extends StatefulWidget {
   const PersistantBottomNavBar({Key? key}) : super(key: key);
@@ -24,22 +25,35 @@ class _PersistantBottomNavBarState extends State<PersistantBottomNavBar> {
     return [
       const Hotstar(),
       const Netflix(),
+      const Images(),
     ];
   }
 
   List<PersistentBottomNavBarItem> navbarItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
+        icon: const ImageIcon(
+          AssetImage("assets/icons/disneyplus-hotstar.png"),
+          size: 30.0,
+        ),
         title: "Hotstar",
         activeColorSecondary: Colors.white,
-        activeColorPrimary: Color(0xff4a62d8),
+        activeColorPrimary: const Color(0xff4a62d8),
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.favorite),
+        icon: const ImageIcon(
+          AssetImage("assets/icons/netflix.png"),
+          size: 24.0,
+        ),
         title: "Netflix",
         activeColorSecondary: Colors.white,
         activeColorPrimary: const Color(0xffE50914),
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.image),
+        title: "Images",
+        activeColorSecondary: Colors.white,
+        activeColorPrimary: Colors.green,
       ),
     ];
   }
