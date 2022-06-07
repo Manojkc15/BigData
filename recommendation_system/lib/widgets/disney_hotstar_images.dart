@@ -40,7 +40,7 @@ class _ImagesState extends State<DisneyHotstarImages> {
       appBar: AppBar(
         backgroundColor: const Color(0xff4a62d8),
         title: const Text(
-          "Disney+ Hotstar Images",
+          "Disney+ Hotstar Insights",
           style: TextStyle(
             fontSize: 20,
           ),
