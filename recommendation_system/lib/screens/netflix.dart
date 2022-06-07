@@ -222,10 +222,15 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
               const SizedBox(height: 20.0),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 40.0,
+                height: 60.0,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: const Color(0xffE50914),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30.0),
+                      ),
+                    ),
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -238,9 +243,9 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     );
                   },
                   child: const Text(
-                    "Images",
+                    "Interesting Insights",
                     style: TextStyle(
-                      fontSize: 22.0,
+                      fontSize: 25.0,
                     ),
                   ),
                 ),

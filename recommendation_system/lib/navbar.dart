@@ -66,6 +66,10 @@ class _PersistantBottomNavBarState extends State<PersistantBottomNavBar> {
       screens: screens(),
       items: navbarItems(),
       navBarStyle: NavBarStyle.style7,
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        curve: Curves.easeInOut,
+        duration: Duration(milliseconds: 1000),
+      ),
     );
   }
 }
