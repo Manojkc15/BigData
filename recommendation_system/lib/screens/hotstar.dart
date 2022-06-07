@@ -237,7 +237,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const DisneyHotsarImages();
+                          return const DisneyHotstarImages();
                         },
                       ),
                     );
