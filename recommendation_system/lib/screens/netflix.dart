@@ -233,12 +233,9 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
+                    Navigator.of(context, rootNavigator: true).push(
                       MaterialPageRoute(
-                        builder: (context) {
-                          return const NetflixIMDbImages();
-                        },
+                        builder: (context) => const NetflixIMDbImages(),
                       ),
                     );
                   },
