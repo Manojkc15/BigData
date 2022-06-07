@@ -21,9 +21,9 @@ class _ImagesState extends State<Images> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xff7D1E6A),
         title: const Text(
-          "Images",
+          "Insights",
           style: TextStyle(
             fontSize: 20,
           ),

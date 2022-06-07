@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+
+import 'zoomimage.dart';
 
 class DisneyHotstarImages extends StatefulWidget {
   const DisneyHotstarImages({Key? key}) : super(key: key);
@@ -77,3 +80,5 @@ class _ImagesState extends State<DisneyHotstarImages> {
     );
   }
 }
+
+
