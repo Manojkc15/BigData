@@ -26,7 +26,7 @@ class _ImagesState extends State<NetflixIMDbImages> {
       appBar: AppBar(
         backgroundColor: const Color(0xffE50914),
         title: const Text(
-          "Netflix IMDb Images",
+          "Netflix Insights",
           style: TextStyle(
             fontSize: 20,
           ),

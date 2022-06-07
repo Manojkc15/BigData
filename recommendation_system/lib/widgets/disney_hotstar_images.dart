@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+
+import 'zoomimage.dart';
 
 class DisneyHotstarImages extends StatefulWidget {
   const DisneyHotstarImages({Key? key}) : super(key: key);
@@ -40,7 +43,7 @@ class _ImagesState extends State<DisneyHotstarImages> {
       appBar: AppBar(
         backgroundColor: const Color(0xff4a62d8),
         title: const Text(
-          "Disney+ Hotstar Images",
+          "Disney+ Hotstar Insights",
           style: TextStyle(
             fontSize: 20,
           ),
@@ -77,3 +80,5 @@ class _ImagesState extends State<DisneyHotstarImages> {
     );
   }
 }
+
+
