@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Images extends StatefulWidget {
-  const Images({Key? key}) : super(key: key);
+class NetflixIMDbImages extends StatefulWidget {
+  const NetflixIMDbImages({Key? key}) : super(key: key);
 
   @override
-  State<Images> createState() => _ImagesState();
+  State<NetflixIMDbImages> createState() => _ImagesState();
 }
 
-class _ImagesState extends State<Images> {
+class _ImagesState extends State<NetflixIMDbImages> {
   List<String> images = [
     'Analyses_By_Age.svg',
     'Contents_Form_India.svg',
@@ -24,9 +24,9 @@ class _ImagesState extends State<Images> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: const Color(0xffE50914),
         title: const Text(
-          "Images",
+          "Netflix IMDb Images",
           style: TextStyle(
             fontSize: 20,
           ),

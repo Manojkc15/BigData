@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Images extends StatefulWidget {
-  const Images({Key? key}) : super(key: key);
+class DisneyHotsarImages extends StatefulWidget {
+  const DisneyHotsarImages({Key? key}) : super(key: key);
 
   @override
-  State<Images> createState() => _ImagesState();
+  State<DisneyHotsarImages> createState() => _ImagesState();
 }
 
-class _ImagesState extends State<Images> {
+class _ImagesState extends State<DisneyHotsarImages> {
   final List<String> images = [
     'Cumulative_IMDB_Ratings_grouped_by_runtimes.png',
     'Distribution_of_IMBD_Ratings.png',
@@ -38,9 +38,9 @@ class _ImagesState extends State<Images> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: const Color(0xff4a62d8),
         title: const Text(
-          "Images",
+          "Disney+ Hotsar Images",
           style: TextStyle(
             fontSize: 20,
           ),

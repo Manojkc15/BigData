@@ -3,8 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:recommendation_system/widgets/empty_card.dart';
 import 'package:recommendation_system/widgets/size_helpers.dart';
 import 'package:http/http.dart';
-import '../navbar.dart';
-import '../widgets/autorefresh.dart';
+import "../widgets/netflix_IMDb_images.dart";
 
 List<String> movies = ['movie1', 'movie2', 'movie3', 'movie4', 'movie5'];
 
@@ -15,7 +14,7 @@ class Netflix extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffE50914),
+        backgroundColor: const Color(0xffE50914),
         title: const Text(
           "Netflix Recommendation system",
           style: TextStyle(fontSize: 20.0),
@@ -113,19 +112,19 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             "https://reccomndsys.herokuapp.com/recommend/${myController.text}";
                         final response = await get(Uri.parse(url));
                         // print("status ${response.statusCode}");
-                        String response_str = response.body;
-                        List<String> movies_list = response_str
-                            .substring(1, response_str.length - 1)
+                        String responseStr = response.body;
+                        List<String> moviesList = responseStr
+                            .substring(1, responseStr.length - 1)
                             .split(',');
                         // print(movies_list.length);
-                        if (movies_list.length > 1) {
-                          for (int i = 0; i < movies_list.length; i++) {
-                            movies_list[i] = movies_list[i]
-                                .substring(1, movies_list[i].length - 1);
+                        if (moviesList.length > 1) {
+                          for (int i = 0; i < moviesList.length; i++) {
+                            moviesList[i] = moviesList[i]
+                                .substring(1, moviesList[i].length - 1);
                           }
 
                           setState(() {
-                            movies = List.from(movies_list);
+                            movies = List.from(moviesList);
                           });
                           // print(response.body.runtimeType);
                           // print(movies_list);
@@ -165,7 +164,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     },
                   ),
                   filled: true,
-                  fillColor: Color.fromARGB(255, 250, 215, 216),
+                  fillColor: const Color.fromARGB(255, 250, 215, 216),
                   focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffEDF9FE), width: 0.0),
@@ -206,7 +205,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             verticalOffset: 44.0,
                             child: FadeInAnimation(
                               child: EmptyCard(
-                                tileColor: Color(0xffE50914),
+                                tileColor: const Color(0xffE50914),
                                 textColor: Colors.white,
                                 moviename: movies[index],
                                 width: MediaQuery.of(context).size.width,
@@ -216,6 +215,32 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                           ),
                         );
                       },
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 40.0,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xffE50914),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const NetflixIMDbImages();
+                        },
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Images",
+                    style: TextStyle(
+                      fontSize: 22.0,
                     ),
                   ),
                 ),
