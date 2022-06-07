@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:recommendation_system/widgets/disney_hotstar_images.dart';
 import 'package:recommendation_system/widgets/empty_card.dart';
 import 'package:recommendation_system/widgets/size_helpers.dart';
 import 'package:http/http.dart';
-import '../navbar.dart';
-import '../widgets/autorefresh.dart';
 
 List<String> movies = ['movie1', 'movie2', 'movie3', 'movie4', 'movie5'];
 
@@ -15,7 +14,7 @@ class Hotstar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 67, 93, 221),
+        backgroundColor: const Color.fromARGB(255, 67, 93, 221),
         title: const Text(
           "Hotstar Recommendation system",
           style: TextStyle(fontSize: 20.0),
@@ -113,19 +112,19 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             "https://reccomndsys.herokuapp.com/disney_recommend/${myController.text}";
                         final response = await get(Uri.parse(url));
                         // print("status ${response.statusCode}");
-                        String response_str = response.body;
-                        List<String> movies_list = response_str
-                            .substring(1, response_str.length - 1)
+                        String responseStr = response.body;
+                        List<String> moviesList = responseStr
+                            .substring(1, responseStr.length - 1)
                             .split(',');
                         // print(movies_list.length);
-                        if (movies_list.length > 1) {
-                          for (int i = 0; i < movies_list.length; i++) {
-                            movies_list[i] = movies_list[i]
-                                .substring(1, movies_list[i].length - 1);
+                        if (moviesList.length > 1) {
+                          for (int i = 0; i < moviesList.length; i++) {
+                            moviesList[i] = moviesList[i]
+                                .substring(1, moviesList[i].length - 1);
                           }
 
                           setState(() {
-                            movies = List.from(movies_list);
+                            movies = List.from(moviesList);
                           });
                           // print(response.body.runtimeType);
                           // print(movies_list);
@@ -165,7 +164,7 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                     },
                   ),
                   filled: true,
-                  fillColor: Color.fromARGB(255, 205, 213, 255),
+                  fillColor: const Color.fromARGB(255, 205, 213, 255),
                   focusedBorder: const OutlineInputBorder(
                     borderSide:
                         BorderSide(color: Color(0xffEDF9FE), width: 0.0),
@@ -206,7 +205,8 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             verticalOffset: 44.0,
                             child: FadeInAnimation(
                               child: EmptyCard(
-                                tileColor: Color.fromARGB(255, 67, 93, 221),
+                                tileColor:
+                                    const Color.fromARGB(255, 67, 93, 221),
                                 textColor: Colors.white,
                                 moviename: movies[index],
                                 width: MediaQuery.of(context).size.width,
@@ -216,6 +216,36 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                           ),
                         );
                       },
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20.0),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 60.0,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 67, 93, 221),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30.0),
+                        ),
+                      )),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const DisneyHotstarImages();
+                        },
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Interesting Insights",
+                    style: TextStyle(
+                      fontSize: 25.0,
                     ),
                   ),
                 ),
