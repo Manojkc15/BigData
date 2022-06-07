@@ -50,11 +50,13 @@ class _ImagesState extends State<NetflixIMDbImages> {
                   )
                 ],
               ),
-              child: SvgPicture.asset(
-                "assets/netflix_IMDb_images/${images[index]}",
-                // height: 340.0,
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.fitWidth,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                child: SvgPicture.asset(
+                  "assets/netflix_IMDb_images/${images[index]}",
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fill,
+                ),
               ),
             );
           }),

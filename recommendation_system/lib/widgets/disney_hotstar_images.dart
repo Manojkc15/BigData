@@ -64,10 +64,13 @@ class _ImagesState extends State<DisneyHotsarImages> {
                   )
                 ],
               ),
-              child: Image.asset(
-                "assets/disney+images/${images[index]}",
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.fitWidth,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(7.0)),
+                child: Image.asset(
+                  "assets/disney+images/${images[index]}",
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fitWidth,
+                ),
               ),
             );
           }),

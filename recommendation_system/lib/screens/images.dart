@@ -47,11 +47,13 @@ class _ImagesState extends State<Images> {
                   )
                 ],
               ),
-              child: SvgPicture.asset(
-                "assets/story-telling-images/${images[index]}",
-                // height: 340.0,
-                width: MediaQuery.of(context).size.width,
-                fit: BoxFit.fitWidth,
+              child: ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(7.0)),
+                child: SvgPicture.asset(
+                  "assets/story-telling-images/${images[index]}",
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.fill,
+                ),
               ),
             );
           }),

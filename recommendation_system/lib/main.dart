@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:recommendation_system/screens/hotstar.dart';
+// import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+// import 'package:recommendation_system/screens/hotstar.dart';
 
 import 'navbar.dart';
-import 'screens/netflix.dart';
+// import 'screens/netflix.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,20 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       //  home: const HomePage(),
       // home: Hotstar(),
-      home: PersistantBottomNavBar(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
+      home: const PersistantBottomNavBar(),
     );
   }
 }
