@@ -80,5 +80,3 @@ class _ImagesState extends State<DisneyHotstarImages> {
     );
   }
 }
-
-

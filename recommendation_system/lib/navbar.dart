@@ -53,7 +53,7 @@ class _PersistantBottomNavBarState extends State<PersistantBottomNavBar> {
         icon: const Icon(Icons.image),
         title: "Insights",
         activeColorSecondary: Colors.white,
-        activeColorPrimary: Color(0xff7D1E6A),
+        activeColorPrimary: const Color(0xff7D1E6A),
       ),
     ];
   }

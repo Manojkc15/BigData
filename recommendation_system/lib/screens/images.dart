@@ -21,7 +21,7 @@ class _ImagesState extends State<Images> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff7D1E6A),
+        backgroundColor: const Color(0xff7D1E6A),
         title: const Text(
           "Insights",
           style: TextStyle(
@@ -51,6 +51,14 @@ class _ImagesState extends State<Images> {
                 borderRadius: const BorderRadius.all(Radius.circular(7.0)),
                 child: SvgPicture.asset(
                   "assets/story-telling-images/${images[index]}",
+                  placeholderBuilder: ((context) => const SizedBox(
+                        height: 350.0,
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xff7D1E6A),
+                          ),
+                        ),
+                      )),
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.fill,
                 ),

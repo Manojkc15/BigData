@@ -54,6 +54,13 @@ class _ImagesState extends State<NetflixIMDbImages> {
                 borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 child: SvgPicture.asset(
                   "assets/netflix_IMDb_images/${images[index]}",
+                  placeholderBuilder: ((context) => const SizedBox(
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xffE50914),
+                          ),
+                        ),
+                      )),
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.fill,
                 ),

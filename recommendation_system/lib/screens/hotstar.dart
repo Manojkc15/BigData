@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:recommendation_system/widgets/disney_hotstar_images.dart';
 import 'package:recommendation_system/widgets/empty_card.dart';
