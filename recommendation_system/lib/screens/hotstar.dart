@@ -5,7 +5,7 @@ import 'package:recommendation_system/widgets/empty_card.dart';
 import 'package:recommendation_system/widgets/size_helpers.dart';
 import 'package:http/http.dart';
 
-List<String> movies = ['movie1', 'movie2', 'movie3', 'movie4', 'movie5'];
+List<String> movies = [];
 
 class Hotstar extends StatelessWidget {
   const Hotstar({Key? key}) : super(key: key);
@@ -108,6 +108,15 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                         // print(rebuild);
                         // List<String> movies_list = getMovies();
                         // print('icon pressed');
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const Center(
+                                child: CircularProgressIndicator(
+                                  color: Color.fromARGB(255, 67, 93, 221),
+                                ),
+                              );
+                            });
                         var url =
                             "https://reccomndsys.herokuapp.com/disney_recommend/${myController.text}";
                         final response = await get(Uri.parse(url));
@@ -122,6 +131,9 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                             moviesList[i] = moviesList[i]
                                 .substring(1, moviesList[i].length - 1);
                           }
+
+                          // ignore: use_build_context_synchronously
+                          Navigator.of(context, rootNavigator: true).pop();
 
                           setState(() {
                             movies = List.from(moviesList);
@@ -149,6 +161,8 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                                     child: const Text('OK'),
                                     onPressed: () {
                                       Navigator.of(context).pop();
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
                                     },
                                   ),
                                 ],
@@ -184,42 +198,44 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                 ),
               ),
               const SizedBox(height: 20.0),
-              Container(
-                height: (475 / height) * height,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 205, 213, 255),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(25.0),
-                  ),
-                ),
-                child: SafeArea(
-                  child: AnimationLimiter(
-                    child: ListView.builder(
-                      padding: const EdgeInsets.all(8.0),
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int index) {
-                        return AnimationConfiguration.staggeredList(
-                          position: index,
-                          duration: const Duration(milliseconds: 375),
-                          child: SlideAnimation(
-                            verticalOffset: 44.0,
-                            child: FadeInAnimation(
-                              child: EmptyCard(
-                                tileColor:
-                                    const Color.fromARGB(255, 67, 93, 221),
-                                textColor: Colors.white,
-                                moviename: movies[index],
-                                width: MediaQuery.of(context).size.width,
-                                height: 75.0,
-                              ),
-                            ),
+              (movies.isNotEmpty)
+                  ? Container(
+                      height: (475 / height) * height,
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 205, 213, 255),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25.0),
+                        ),
+                      ),
+                      child: SafeArea(
+                        child: AnimationLimiter(
+                          child: ListView.builder(
+                            padding: const EdgeInsets.all(8.0),
+                            itemCount: 5,
+                            itemBuilder: (BuildContext context, int index) {
+                              return AnimationConfiguration.staggeredList(
+                                position: index,
+                                duration: const Duration(milliseconds: 375),
+                                child: SlideAnimation(
+                                  verticalOffset: 44.0,
+                                  child: FadeInAnimation(
+                                    child: EmptyCard(
+                                      tileColor: const Color.fromARGB(
+                                          255, 67, 93, 221),
+                                      textColor: Colors.white,
+                                      moviename: movies[index],
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 75.0,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ),
+                        ),
+                      ),
+                    )
+                  : Container(),
               const SizedBox(height: 20.0),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
