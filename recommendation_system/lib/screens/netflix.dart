@@ -98,12 +98,16 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
             children: [
               TextField(
                 controller: myController,
+                cursorColor: const Color(0xffE50914),
+                cursorHeight: 28.0,
+                textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     icon: const Icon(Icons.search),
                     color: const Color(0xffE50914),
                     iconSize: 35.0,
                     onPressed: () async {
+                      FocusScope.of(context).unfocus();
                       if (myController.text.length > 1) {
                         rebuild = true;
                         // print(rebuild);
@@ -195,6 +199,9 @@ class _RecommendationWidgetState extends State<RecommendationWidget> {
                   ),
                   // labelText: 'Enter Name',
                   hintText: 'Enter a TV-show title',
+                  hintStyle: const TextStyle(
+                    fontSize: 20.0,
+                  ),
                 ),
               ),
               const SizedBox(height: 20.0),
